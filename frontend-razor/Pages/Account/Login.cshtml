@@ -1,0 +1,72 @@
+@page
+@model Frontend.Pages.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Connexion";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Connexion</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label asp-for="LoginRequest.Email" class="form-label"></label>
+                            <input asp-for="LoginRequest.Email" class="form-control" placeholder="Email">
+                            <span asp-validation-for="LoginRequest.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label asp-for="LoginRequest.Password" class="form-label"></label>
+                            <input asp-for="LoginRequest.Password" type="password" class="form-control" placeholder="Mot de passe">
+                            <span asp-validation-for="LoginRequest.Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group form-check mt-3">
+                            <input asp-for="LoginRequest.RememberMe" class="form-check-input">
+                            <label class="form-check-label" asp-for="LoginRequest.RememberMe"></label>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+                        </div>
+                    </form>
+
+                    <div class="mt-3 text-center">
+                        <a href="/Account/ForgotPassword">Mot de passe oublié ?</a>
+                    </div>
+
+                    <div class="mt-3 text-center">
+                        <p>Pas encore inscrit ? <a href="/Account/Register">Créer un compte</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Gestion des messages d'erreur
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <text>
+                showError('@Model.ErrorMessage');
+                </text>
+            }
+
+            function showError(message) {
+                // Ici vous pouvez utiliser Toastr, SweetAlert ou une simple alert
+                alert(message);
+                // Exemple avec Toastr: toastr.error(message);
+            }
+        });
+    </script>
+}

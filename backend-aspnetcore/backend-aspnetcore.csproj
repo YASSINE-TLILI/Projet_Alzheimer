@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Entity Framework Core 8.0.5 -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+
+		<!-- Authentification JWT -->
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.12.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.12.0" />
+
+		<!-- ⚠️ Attention : 8.12.0 est la version de Microsoft.IdentityModel.Tokens, mais pour System.IdentityModel.Tokens.Jwt la version stable la plus utilisée avec .NET 8 est 6.35.0 -->
+
+		<!-- Hashage mot de passe -->
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+
+		<!-- JSON & Configuration -->
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+
+		<!-- Extensions (Logger, Config) : inutile de spécifier Microsoft.Extensions.Configuration/Logging car inclus dans ASP.NET Core Web -->
+		<!-- Tu peux les retirer sauf si tu veux une version précise : -->
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+	</ItemGroup>
+
+</Project>

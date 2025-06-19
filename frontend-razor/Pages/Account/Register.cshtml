@@ -1,0 +1,42 @@
+@page
+@model Frontend.Pages.Account.RegisterModel
+
+<h2>Inscription</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="RegisterRequest.Nom"></label>
+        <input asp-for="RegisterRequest.Nom" class="form-control" />
+        <span asp-validation-for="RegisterRequest.Nom" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RegisterRequest.Prenom"></label>
+        <input asp-for="RegisterRequest.Prenom" class="form-control" />
+        <span asp-validation-for="RegisterRequest.Prenom" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RegisterRequest.Email"></label>
+        <input asp-for="RegisterRequest.Email" class="form-control" />
+        <span asp-validation-for="RegisterRequest.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RegisterRequest.Password"></label>
+        <input asp-for="RegisterRequest.Password" type="password" class="form-control" />
+        <span asp-validation-for="RegisterRequest.Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RegisterRequest.Role"></label>
+        <select asp-for="RegisterRequest.Role" class="form-control">
+            <option value="">-- Sélectionner un rôle --</option>
+            <option value="Utilisateur">Utilisateur</option>
+            <option value="Administrateur">Administrateur</option>
+        </select>
+        <span asp-validation-for="RegisterRequest.Role" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+</form>

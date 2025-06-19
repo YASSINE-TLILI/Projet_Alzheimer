@@ -1,0 +1,17 @@
+@* Login.cshtml *@
+@model LoginModel
+
+<h2>Connexion</h2>
+<form asp-action="Login" method="post">
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <button type="submit">Se connecter</button>
+</form>

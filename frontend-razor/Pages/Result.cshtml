@@ -1,0 +1,50 @@
+@page
+@model frontend_razor.Pages.ResultModel
+@{
+    ViewData["Title"] = "Résultats de l'analyse";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Résultats de l'analyse</h1>
+
+    <div class="card shadow">
+        <div class="card-body">
+            @if (Model.DetectionResponse?.Prediction != null)
+            {
+                var prediction = Model.DetectionResponse.Prediction;
+            <div class="alert alert-@(prediction.PredictedClass == "NonDément" ? "success" : "warning")">
+                <h4>Fichier : @Model.DetectionResponse.FileName</h4>
+                <h4>Diagnostic : @prediction.PredictedClass</h4>
+                <p>Confiance : <strong>@((prediction.Confidence * 100).ToString("0.00"))%</strong></p>
+            </div>
+
+            <h5>Détails :</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Classe</th>
+                        <th>Probabilité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var prob in prediction.Probabilities)
+                        {
+                    <tr>
+                        <td>@prob.Key</td>
+                        <td>@((prob.Value * 100).ToString("0.00"))%</td>
+                    </tr>
+                        }
+                </tbody>
+            </table>
+            }
+            else
+            {
+            <div class="alert alert-danger">
+                Aucun résultat disponible.
+            </div>
+            }
+
+            <a href="/" class="btn btn-primary">Nouvelle analyse</a>
+        </div>
+    </div>
+</div>
